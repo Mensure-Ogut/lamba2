@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamba Açma/Kapama</title>
+
+<style>
+    a{background-color: chocolate;
+    color:aliceblue;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-style: italic;
+    font: weight 500px;;
+    padding: 10px 40px;
+    margin: 30px;}
+</style>
+
+</head>
+<body>
+    <br>
+    <a href="#" onclick="resimDegistir()">Açma/Kapama</a>
+    <br>
+    <br>
+    <br>
+    <a href="#" onclick="renkDegistir()">Renk Değiştir</a>
+    <br>
+    <br>
+    <br>
+    <img id="lamba" src="lamba_kapali.jpg" width="400" height="500">
+    
+    <script>
+        alert("Sizi mi kırcam bacikolar. Alın istekleriz! :P")
+      let aktifResim = 1;
+let renkIndex = 0;
+
+    // Renkli resim dizisi 
+    const renkliResimler = ["lamba_acik.jpg", "lamba_mavi.jpg", "lamba_kirmizi.jpg"];
+    function resimDegistir() {
+      const img = document.getElementById("lamba");
+if (aktifResim === 1) {
+        img.src = renkliResimler[0]; // ışığı aç (ilk resim)
+        aktifResim = 2;
+        renkIndex = 0;
+      } else {
+        img.src = "lamba_kapali.jpg";
+        aktifResim = 1;
+      }
+    }
+
+    function renkDegistir() {
+      const img = document.getElementById("lamba");
+
+      // Eğer ışık kapalıysa renk değiştirme çalışmasın
+      if (aktifResim !== 2) return;
+
+      // 4 veya daha fazla resim varsa değişiklik yapılmasın
+      if (renkliResimler.length >= 4) return;
+
+      // Sıradaki renge geç
+      renkIndex = (renkIndex + 1) % renkliResimler.length;
+      img.src = renkliResimler[renkIndex];
+    }
+    </script>
+</body>
+</html>
